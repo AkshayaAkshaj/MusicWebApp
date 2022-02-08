@@ -35,23 +35,22 @@ function draw(){
         circle(leftWristX,leftWristY,20);
         song_1.stop();
     if(song_2.isPlaying()==false){
-
-  
-    
-    leftY=Number(leftWristY);
+        song_2.play();
+   leftY=Number(leftWristY);
     left_remove_decimal=floor(leftY);
     letItGo=left_remove_decimal/500;
-    song_2.play();
+    
     document.getElementById("song_name").innerHTML="Let It Go";
 }
-    }else if(rigthWristScore>0.2){
+    }else if(rigthWristScore>0.1){
         circle(rightWristX,rightWristY,20);
         song_2.stop();
         if(song_1.isPlaying()==false){
+            song_1.play();
             rightY=Number(rightWristY);
             right_remove_decimel=floor(rightY);
             IntoTheUnknown=right_remove_decimel/500;
-            song_1.play();
+            
             document.getElementById("song_name").innerHTML="Into the Unknown";
         }
     }
