@@ -2,6 +2,8 @@ song_1="";
 song_2="";
 leftWristScore=0;
 letItGo=0;
+rigthWristScore=0;
+IntoTheUnknown=0;
 
 rightWristX=0;
 rightWristY=0;
@@ -42,6 +44,16 @@ function draw(){
     song_2.play();
     document.getElementById("song_name").innerHTML="Let It Go";
 }
+    }else if(rigthWristScore>0.2){
+        circle(rightWristX,rightWristY,20);
+        song_2.stop();
+        if(song_1.isPlaying()==false){
+            rightY=Number(rightWristY);
+            right_remove_decimel=floor(rightY);
+            IntoTheUnknown=right_remove_decimel/500;
+            song_1.play();
+            document.getElementById("song_name").innerHTML="Into the Unknown";
+        }
     }
 }
 function modelLoaded(){
@@ -53,6 +65,8 @@ function gotPoses(results){
         console.log(results);
         leftWristScore=results[0].pose.keypoints[9].score;
         console.log("Left Wrist Score = "+leftWristScore);
+        rigthWristScore=results[0].pose.keypoints[10].score;
+        console.log("Right Wrist Score = "+rigthWristScore);
 
         rightWristX=results[0].pose.rightWrist.x;
         rightWristY=results[0].pose.rightWrist.y;
